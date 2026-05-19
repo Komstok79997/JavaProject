@@ -106,19 +106,14 @@ const timer = function(interval = 1000) {
     }
 };
 setInterval(timer, 1000);
-// закінчення таймера
-//кінець Л11
+// закінчення таймера кінець Л11
+
 
 //Початок Л12
 
 let n = Array.from({ length: 10 }, (_, i) => i + 1);
 let joh = n.map(num => num * (num+1)/2);
 console.log(joh.join('  '));
-
-let cars = ["Saab", "Volvo", "BMW"];
-cars[10] = "Toyota";
-console.log(cars[10]); // Toyota
-console.log (cars [2]); // undefined
 
 
 let ubi = [1,2,3,4,5,6,7,8,9,10];
@@ -196,7 +191,7 @@ console.log("7. Зворотний алфавітний: " + fruits.join(', ') +
 // 8. виведіть масив fruits, відсортований за довжиною слів
 fruits.sort((a, b) => a.length - b.length);
 console.log("8. За довжиною слів: " + fruits.join(', ') + "<br>");
-//кінець Л12
+//                                                                                                   кінець Л12
 
 //
 
@@ -226,14 +221,11 @@ document.addEventListener('DOMContentLoaded', function() { // Запускаєм
         const tel = document.forms["ContactsForm"]["tel"].value;
         const email = document.forms["ContactsForm"]["email"].value;
 
-
         // 1. Перевірка на порожні поля
         if (username === "" || userlogin === "" || tel === "" || email === "") {
             alert("Будь ласка, заповніть усі обов'язкові поля.");
             return; // Зупиняємо функцію, модалка не відкриється
         }
-
-
         // 2. Дозволяємо українську та англійську розкладки
         const namePattern = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ' \-]+$/;
         if (!namePattern.test(username)) {
@@ -244,30 +236,21 @@ document.addEventListener('DOMContentLoaded', function() { // Запускаєм
             alert("Помилка: Прізвище може містити лише літери!");
             return;
         }
-
-
         // 3. Перевірка телефону
         const phonePattern = /^\+380\d{9}$/;
         if (!phonePattern.test(tel)) {
             alert("Некоректний номер телефону!\nФормат має бути: +380XXXXXXXXX (без пробілів).");
             return;
         }
-
-
         // 4. Перевірка пошти
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@a-zA-Z]*[a-zA-Z]+$/;
         if (!emailPattern.test(email)) {
             alert("Некоректний формат електронної пошти.");
             return;
         }
-
-
         //Усі перевірки пройдені!
         modal.classList.remove("hidden");
-
-
     });
-
 
     closeBtns.forEach(button => {
         button.addEventListener("click", () => {
@@ -380,7 +363,7 @@ function deleteTask(id) {
     renderTasks();
 }
 
-// ЗАХИСНИЙ БЛОК: Вішаємо події ТІЛЬКИ якщо кнопки існують на поточній сторінці
+//Вішаємо події ТІЛЬКИ якщо кнопки існують на поточній сторінці
 if (addTaskBtn && taskInput) {
     addTaskBtn.addEventListener("click", addTask);
 
@@ -427,7 +410,7 @@ if (registerForm) {
 }
 
 
-//Л 15 3
+//
 
 //  КАРТКИ ІНВЕСТОРА- 4Л
 document.addEventListener('DOMContentLoaded', function() {
@@ -459,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //далі інше, 6 Зав
 
-/*ші*/
+/*ші
 document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chatInput');
     const chatSendBtn = document.getElementById('chatSendBtn');
@@ -570,3 +553,4 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Enter') sendToAI();
     });
 });
+*/
