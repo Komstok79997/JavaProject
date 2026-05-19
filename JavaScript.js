@@ -271,9 +271,8 @@ document.addEventListener('DOMContentLoaded', function() { // Запускаєм
     });
 });
 // далі 5- ті завдання
-// ==========================================================================
-// БЛОК 1: TODO-СПИСОК (ІНТЕРАКТИВНИЙ ТРЕКЕР)
-// ==========================================================================
+// БЛОК 1: TODO-СПИСОК
+
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");

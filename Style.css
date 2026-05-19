@@ -106,12 +106,12 @@ table {
 
 .Zagolovok-text{ /* це для всіх заголовків в тексті. Не працює поза текстом*/
     font-family: "JetBrains Mono", sans-serif;
-    color: #f0f4f0;
+    color: #93b791;
     text-align: center;
     flex-direction: column;
     display: flex;
     justify-content: center;
-
+    text-shadow: 0 1px 2px rgba(0,0,0,0.99);
     align-items: center;
     line-height: 1.6;
     margin: 0 auto;
@@ -167,7 +167,6 @@ table {
     padding: 0;
 }
 
-/* 4. МАГІЯ: Налаштовуємо темні картки (перевертаємо вміст та зменшуємо відступи) */
 #timer .Zvitchayniy-text {
     display: flex;
     flex-direction: column-reverse; /* Ставить підпис <p> над цифрами <h2> */
@@ -262,30 +261,6 @@ a[href^="https"]::after {
 a[href*="google"] {
     color: #4285F4 !important; /* Фірмовий колір Google, щоб викладачка точно помітила */
 }
-/* Змінює текст: Будь ласка, ми готові до ваших пропозицій */
-footer center address ul { padding: 0; }               /* Descendant */
-.Zagolovok-text > h2 { color: #8cd586; }               /* Child */
-br + input { margin-top: 5px; }                        /* Adjacent sibling */
-
-h2 ~ form { border: 1px solid rgba(140,213,134, 0.2); padding: 20px; border-radius: 15px;} /* General sibling */
-/* ПУНКТ 6: Правило LVHA для посилань у футері */
-footer a:link { color: #8cd586; text-decoration: none; }
-footer a:visited { color: #5a8a56; }
-footer a:hover { color: #ffffff; text-decoration: underline; }
-footer a:active { color: #ffeb3b; }
-/* ПУНКТ 7: Структурні псевдокласи */
-footer ul a:nth-child(even) { opacity: 0.8; }           /* Кожне парне посилання трохи тьмяніше */
-/* (.border0) --- */
-.border0 ul li:first-child { font-weight: bold; color: #8cd586; }
-.border0 ul li:nth-child(even) { background-color: rgba(255,255,255,0.05); }
-/* ПУНКТ 8: Складні селектори */
-div:not(#logotip) { outline: none; } /* Відсікаємо зайві контури */
-.border:is(:hover, :active) { background-color: rgba(20, 40, 20, 0.95); } /* Об'єднання станів */
-/* 6. Псевдоклас :checked для чекбоксу */
-input[type="checkbox"]:checked {
-    transform: scale(1.5); /* Галочка збільшується при натисканні */
-    margin-right: 10px;
-}
 
 .Product-Container:hover {
     cursor: pointer;
@@ -363,7 +338,6 @@ input[type="checkbox"]:checked {
     flex-direction: column;
     padding: 20px;
     color: var(--color);
-
     font-family: var(--font);
     text-align: left;
     line-height: 1.6;
@@ -584,8 +558,43 @@ input[type="checkbox"]:checked {
         margin: 15px auto;
         display: block;
     }
+    #timer {
+        width: 100% !important;
+        padding: 15px 10px; /* Зменшуємо відступи по боках контейнера */
+        gap: 15px;
+        box-sizing: border-box;
+    }
 
-    /* 7. ЗНИЩУЄМО СТІНУ З ФОТО (Перетворюємо на плитку 2х2) */
+    #timer .Opisoviy-text {
+        width: 100% !important;
+        font-size: 20px; /* Зменшуємо заголовок */
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    #timer .time {
+        width: 100%;
+        gap: 5px; /* Мінімальна відстань між картками, щоб вони влізли */
+        flex-wrap: nowrap; /* Тримаємо всі 4 картки в одному ряду */
+        padding: 0;
+    }
+
+    /* КРИТИЧНЕ ВИПРАВЛЕННЯ: Скасовуємо 100% ширину і ділимо простір на 4 рівні частини */
+    #timer .Zvitchayniy-text {
+        flex: 1; /* Кожна картка бере рівно 1/4 доступного місця */
+        width: auto !important; /* Перебиваємо правило з 5-го пункту */
+        min-width: unset;
+        padding: 10px 5px; /* Компактні внутрішні відступи */
+    }
+
+    #timer .time h2 {
+        font-size: 1.5rem; /* Значно зменшуємо цифри, щоб не розривали екран */
+        margin: 5px 0 0 0;
+    }
+
+    #timer .Zvitchayniy-text p {
+        font-size: 10px; /* Компактні підписи (Days, Hours) */
+    }
     .Product-Image {
         display: flex;
         flex-direction: row;
