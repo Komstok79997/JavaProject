@@ -1,0 +1,973 @@
+
+:root  {
+    --font: Roboto, sans-serif;
+    --color: #f0f4f0;
+    --box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    --card-bg: rgba(10, 20, 10, 0.99); /* Темний фон карток */
+
+}
+html {
+    /* Це база для скріншотів та довгих сторінок */
+    background-color: #0d1a0d;
+    background-image: url("Hvoya.jpg");
+
+    /* МАГІЯ: дозволяємо фону повторюватися вниз, якщо сторінка дуже довга */
+    background-repeat: repeat-y;
+    background-position: center top;
+
+    /* Налаштовуємо ширину на 100%, а висоту — авто, щоб хвоя не розтягувалася як гума */
+    background-size: 100% auto;
+}
+
+body {
+    margin: 0;
+    color: white;
+    min-height: 100vh;
+    background-color: transparent; /* body прозорий, щоб бачити фон html */
+
+    /* А тут магія для реального користувача */
+    background-image: url("Hvoya.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+/*@media (prefers-color-scheme: light) {
+    :root {
+        --font: "Georgia", sans-serif;
+        --color: #0d1a0d;
+        --card-bg: rgba(245, 255, 245, 0.85);
+        --shadow-color: rgba(0, 0, 0, 0.15);
+    }
+} */
+
+a {/* для нижньго посилання*/
+    color: #6b784d;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+img{
+    user-select: none;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: x-large;
+}
+
+/* початок форматувань текстів */
+
+.logotip {
+    display: flex;         /* Вмикаємо режим гнучких блоків */
+    align-items: center;   /* Вирівнюємо лого і текст по одній горизонтальній лінії */
+    justify-content: center; /* Притискаємо все до лівого краю (або center для центрування всього блоку) */
+    background-color: rgba(25,46,23, 0.9);
+    font-family: var(--font);
+    font-size: medium;
+    gap: 20px;
+}
+.logotip img{
+    box-shadow: none;        /* Вбиваємо глобальну тінь, яка малює брудний квадрат навколо PNG */
+    border-radius: 0;        /* Скидаємо глобальне заокруглення кутів */
+    border: none;            /* Про всяк випадок, якщо десь вилізе стандартна рамка */
+    margin-right: 0;         /* Скидаємо глобальний відступ (margin), оскільки в .logotip у тебе вже чудово працює gap: 20px для відступу до меню */
+}
+.logotip h2 {
+    margin: 0; /* Прибираємо зайве повітря, щоб вирівнювання було ідеальним */
+}
+/* тут ми працюємо з верхньою сторінкою, тобто з логотипом та як виглядає верхня межа. Тут ми НЕ працюємо з текстом */
+.Top{
+    color: #3e5c32;  /*це робота з кольором тексту на верхній сторінці*/
+    align-items: center;                                                                               /* Вирівнюємо лого і текст по одній горизонтальній лінії */
+    font-size: 35px;
+    text-decoration: none;
+    padding-left: 10px;                                                                                /* Додасть трохи місця між пунктами меню, щоб вони не злипалися */
+}
+.Top:hover{
+    color: whitesmoke;
+}
+/* тут даємо шаблони для текстів */
+.Zvitchayniy-text{ /* це для будь якого не особливого сайту */
+    font-family: var(--font);
+    color: #f0f4f0;
+    text-align: left;
+    max-width: 800px;
+    line-height: 1.6;
+    margin: 0 auto;
+    font-size: 20px;
+    padding: 30px;
+    background-color: rgba(10, 20, 10, 0.75); /* Темна напівпрозора підложка під текст */
+    border-radius: 15px; /* Заокруглені кути для сучасності */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /*border: 5px solid darkgreen;*/
+
+}
+
+
+.Zagolovok-text{ /* це для всіх заголовків в тексті. Не працює поза текстом*/
+    font-family: "JetBrains Mono", sans-serif;
+    color: #f0f4f0;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px; /* Заокруглені кути для сучасності */
+    font-size: 35px;
+}
+.Opisoviy-text{
+    font-family: var(--font);
+    color: #f0f4f0;
+    text-align: left;
+    font-size: 32px;
+    max-width: 800px;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(10, 20, 10, 0.75); /* Темна напівпрозора підложка під текст */
+    border-radius: 15px; /* Заокруглені кути для сучасності */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 35px;
+}
+.Product-Container {        /* наш внутрішній блок з фактами. Тобто та зигзаг табличка відноситься сюди*/
+    display: flex;                                                                   /* Вмикаємо режим гнучких блоків */
+    align-items: center;                                                                      /* Центруємо фото і текст по вертикалі */
+    justify-content: center;                                                                    /* Розміщуємо весь блок по центру екрана */
+    gap: 28px;                                                                                                          /* Відстань між текстом і фотографією */
+    max-width: 1200px;                                                                                       /* Обмежуємо ширину, щоб текст не розтягувався на весь екран */
+    margin: 0 auto;                                                                         /* Автоматичні відступи по боках для центрування всієї коробки */
+    padding: 20px;
+    background-color: rgba(140,213,134, 0.3) ;
+    margin-bottom: 50px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px; /* Заокруглені кути для сучасності */
+}
+#timer {
+    max-width: 450px; /* Зменшуємо загальну ширину (було 1200px) */
+    padding: 15px 25px;
+    gap: 20px; /* Зменшуємо відстань між лівим написом та картками */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 2. Зменшуємо лівий блок "New Month Count" */
+#timer .Opisoviy-text {
+    font-size: 22px; /* Було 32px */
+    padding: 15px 20px;
+    margin-bottom: 0; /* Прибираємо зайвий відступ вниз */
+}
+
+/* 3. Зменшуємо контейнер з самими картками часу */
+#timer .time {
+    gap: 12px; /* Зменшуємо відстань між картками (було 20px) */
+    padding: 0;
+}
+
+/* 4. МАГІЯ: Налаштовуємо темні картки (перевертаємо вміст та зменшуємо відступи) */
+#timer .Zvitchayniy-text {
+    display: flex;
+    flex-direction: column-reverse; /* Ставить підпис <p> над цифрами <h2> */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px; /* Зменшуємо масивні відступи (було 30px) */
+    min-height: auto; /* Скидаємо мінімальну висоту */
+    line-height: 1.2;
+    border-radius: 12px;
+}
+
+/* 5. Зменшуємо розмір самих цифр */
+#timer .time h2 {
+    font-size: 3rem; /* Зменшуємо гігантський шрифт (було 5rem) */
+    margin: 5px 0 0 0; /* Додаємо акуратний відступ зверху від підпису до цифр */
+}
+
+/* 6. Стилізуємо підписи (Days, Hours...) */
+#timer .Zvitchayniy-text p {
+    font-size: 14px; /* Робимо підпис акуратнішим */
+    margin: 0;
+    color: #8cd586; /* Додаємо фірмовий зелений акцент (за бажанням можна змінити на #fff) */
+    text-transform: uppercase; /* Великі літери для кращого стилю */
+    font-weight: 500;
+}
+
+.Product-Text {
+    flex: 1;                                                                                                            /* Текст займає доступну частину простору */
+    text-align: left;                                                                                      /* Текст вирівнюється по лівому краю для зручності читання */
+}
+
+img {
+    border-radius: 15px;       /* Заокруглюємо кути фотографії для сучасного вигляду */
+    margin-right: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"], input[type="tel"], input[type="email"] {
+    width: 300px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid #6b784d;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font);
+    font-size: 16px;
+}
+input[name^="user"], input[name$="login"] {
+    background-color: #e8f5e9;
+}
+
+/* 3. Селектор [disabled] - як просили в лабі, заблоковане поле стає сірим */
+input[disabled] {
+    background-color: #555555;
+    color: #aaaaaa;
+    cursor: not-allowed;
+    border: 1px solid #333;
+}
+
+/* 4. Псевдоклас :focus - коли ти клікаєш у поле мишкою, воно починає світитися зеленим */
+input:focus {
+    outline: none;
+    border: 3px solid #8cd586;
+    box-shadow: 0 0 10px #8cd586;
+}
+
+/* 5. Псевдокласи :valid та :invalid для поля Email (яке [required]) */
+input[type="email"], input[type="tel"]:invalid {
+    border: 3px solid red; /* Світиться червоним, поки не введеш символ @ */
+}
+input[type="email"], input[type="tel"]:valid {
+    border: 3px solid #8cd586; /* Стає зеленим, коли email введено правильно */
+}
+
+
+/* 6. Псевдоклас :checked для чекбоксу */
+input[type="checkbox"]:checked {
+    transform: scale(1.5); /* Галочка збільшується при натисканні */
+    margin-right: 10px;
+}
+a[href^="https"]::after {
+    font-size: 12px;
+    margin-left: 5px;
+}
+a[href*="google"] {
+    color: #4285F4 !important; /* Фірмовий колір Google, щоб викладачка точно помітила */
+}
+/* Змінює текст: Будь ласка, ми готові до ваших пропозицій */
+footer center address ul { padding: 0; }               /* Descendant */
+.Zagolovok-text > h2 { color: #8cd586; }               /* Child */
+br + input { margin-top: 5px; }                        /* Adjacent sibling */
+
+h2 ~ form { border: 1px solid rgba(140,213,134, 0.2); padding: 20px; border-radius: 15px;} /* General sibling */
+/* ПУНКТ 6: Правило LVHA для посилань у футері */
+footer a:link { color: #8cd586; text-decoration: none; }
+footer a:visited { color: #5a8a56; }
+footer a:hover { color: #ffffff; text-decoration: underline; }
+footer a:active { color: #ffeb3b; }
+/* ПУНКТ 7: Структурні псевдокласи */
+footer ul a:nth-child(even) { opacity: 0.8; }           /* Кожне парне посилання трохи тьмяніше */
+/* (.border0) --- */
+.border0 ul li:first-child { font-weight: bold; color: #8cd586; }
+.border0 ul li:nth-child(even) { background-color: rgba(255,255,255,0.05); }
+/* ПУНКТ 8: Складні селектори */
+div:not(#logotip) { outline: none; } /* Відсікаємо зайві контури */
+.border:is(:hover, :active) { background-color: rgba(20, 40, 20, 0.95); } /* Об'єднання станів */
+/* 6. Псевдоклас :checked для чекбоксу */
+input[type="checkbox"]:checked {
+    transform: scale(1.5); /* Галочка збільшується при натисканні */
+    margin-right: 10px;
+}
+
+.Product-Container:hover {
+    cursor: pointer;
+}
+.Product-Container:active{
+    transform: scale(0.999);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+.Product-Image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px; /* Відстань між фото */
+    position: sticky; top: 20px;
+}
+.border-Container {        /* наш внутрішній блок з фактами. Тобто та зигзаг табличка відноситься сюди*/
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 115px auto;
+    padding: 20px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    width: 100% !important;
+    box-sizing: border-box;
+    align-items: stretch;
+
+}
+.border{
+    cursor: pointer;
+    background-color: rgba(10, 20, 10, 0.85); /* Повернули напівпрозорий фон */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Повернули тінь для об'єму */
+    justify-content: space-between;    /*   flex-wrap: wrap;*/
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 20px;
+    color: white;
+    border-radius: 35px;
+    font-family: var(--font);
+    text-align: left;
+    line-height: 1.6;
+    font-size: 20px;
+    width: 93%;
+    flex-direction: column;
+    margin: 10px 50px;
+}
+.border img{
+    border-radius: 15px;
+    width: 93%;
+    border-radius: 15px; /* Заокруглюємо самі картинки */
+    margin-top: 20px; /* Відступ від тексту */
+}
+.border:hover{
+    background-color: rgba(10, 20, 10, 0.75);
+}
+.border:active {
+    transform: scale(0.95); /* Картка "втискається" в екран на 5% */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.8); /* Тінь стає меншою, бо об'єкт "ближче" до фону */
+}
+.border0{
+    background-color: rgba(10, 20, 10, 0.95);
+    box-shadow: 18px 18px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 115px auto;
+    width: 600px;
+    height: auto;
+    display: flex;                                                              /* Вмикаємо режим гнучких блоків */
+    align-items: center;                                                                      /* Центруємо фото і текст по вертикалі */
+    justify-content: center;                                                                    /* Розміщуємо весь блок по центру екрана */
+    gap: 28px;
+    flex-direction: column;
+    padding: 20px;
+    color: var(--color);
+
+    font-family: var(--font);
+    text-align: left;
+    line-height: 1.6;
+    font-size: 20px;
+
+}
+
+.all-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(10, 20, 10, 0.9);
+    border-radius: 15px;
+}
+
+.sidebar{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: left;
+    gap: 28px;
+    background-color: rgba(10, 20, 10, 0.9);
+    width: 25%;
+}
+.main-content-account {
+    background-color: rgba(10, 20, 10, 0.99);
+    width: 100%;               /* Виправляємо старі 75% */
+    max-width: 1200px;         /* Обмежуємо ширину, щоб було гарно на ПК */
+    margin: 40px auto;         /* Центруємо блок по горизонталі + відступ від хедера */
+    padding: 30px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 200px); /* МАГІЯ: Змушує блок займати весь вільний простір по висоті, відштовхуючи футер */
+}
+/* Це контейнер для сітки */
+.investor-grid {
+    display: grid;
+    gap: 20px;
+
+
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-card {
+    background-color: rgba(140, 213, 134, 0.1); /* Легкий зелений фон */
+    border: 1px solid #000000;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Плавність для hover-ефекту */
+}
+
+/* Hover-ефект для карток */
+.grid-card:hover {
+    transform: translateY(-10px); /* Картка "підстрибує" вгору при наведенні */
+    background-color: rgba(140, 213, 134, 0.3);
+}
+.grid-card:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+
+}
+
+.time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    color: white;
+    border-radius: 15px;
+    font-family: var(--font);
+    text-align: left;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-size: cover;
+}
+.time h2{
+    font-size: 5rem;
+    font-weight: 100;
+}
+
+
+/* ПРАВИЛО ДЛЯ МОБІЛЬНИХ планшетів */
+@media (max-width: 1200px) {
+    .sidebar { width: 30%; }
+    .main-content-account { width: 70%; }
+
+    .Product-Container, .border-Container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .border, .border0 {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 95% !important;
+        box-sizing: border-box;
+        margin: 15px auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .Zvitchayniy-text, .Opisoviy-text, .Product-Text {
+        width: 100% !important;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+
+    img {
+        max-width: 100% !important;
+        height: auto;
+        display: block;
+        margin: 15px auto;
+    }
+
+    /* Ставимо стіну з картинок у рівний стовпчик */
+    .Product-Image {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: static !important;
+    }
+    .Product-Image br {
+        display: none !important;
+    }
+    .Product-Image img {
+        width: 80% !important;
+        margin: 0 auto;
+    }
+}
+/* ПРАВИЛО ДЛЯ МОБІЛЬНИХ ТЕЛЕФОНІВ (Екрани вужчі за 768px) */
+@media (max-width: 768px) {
+
+    #logotip {
+        flex-direction: row;         /* Ставимо в один рядок (паралельно) */
+        justify-content: flex-start;  /* Притискаємо все до лівого краю */
+        align-items: center;          /* Вирівнюємо по вертикалі по центру */
+        padding: 10px 15px;
+        flex-wrap: nowrap;           /* Не дозволяємо логотипу і меню розриватися */
+    }
+
+    #logotip img {
+        width: 45px;                 /* Компактний розмір */
+        margin: 0;                   /* Прибираємо центрирування, щоб піти вліво */
+        flex-shrink: 0;              /* Забороняємо логотипу стискатися, якщо мало місця */
+    }
+
+    nav {
+        margin-left: 15px;           /* Відступ від лого до першої кнопки */
+        display: flex;
+        flex-direction: row;         /* Кнопки теж у рядок */
+        flex-wrap: wrap;             /* Якщо кнопок забагато — вони перейдуть нижче */
+        justify-content: flex-start;
+        margin-top: 0;               /* Прибираємо зайвий відступ зверху */
+    }
+
+    .Top {
+        font-size: 16px;             /* Ще трохи зменшуємо шрифт, щоб усе влізло */
+        padding: 5px;
+    }
+    /* 2. РЯТУЄМО ЛАБУ 7 (Кабінет) */
+    .all-page {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .main-content-account {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* 3. КОНТЕЙНЕРИ */
+    .Product-Container, .border-Container {
+        flex-direction: column;
+        padding: 10px;
+        margin: 20px 10px;
+    }
+
+    /* 4. КАРТКИ */
+    .border, .border0 {
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        margin: 10px 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* 5. ТЕКСТИ */
+    .Zvitchayniy-text, .Opisoviy-text {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+    }
+    .Zagolovok-text {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    /* 6. БАЗОВІ КАРТИНКИ */
+    img {
+        max-width: 80%;
+        height: auto;
+        margin: 15px auto;
+        display: block;
+    }
+
+    /* 7. ЗНИЩУЄМО СТІНУ З ФОТО (Перетворюємо на плитку 2х2) */
+    .Product-Image {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Дозволяємо перенесення, якщо не влазять */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .Product-Image img {
+        width: 45%; /* Дві картинки акуратно стануть в один ряд */
+        margin: 0;
+    }
+    .Product-Image br {
+        display: none; /* Нейтралізуємо HTML-перенесення рядків */
+    }
+}
+
+/* Стилізація для фону (оверлея) */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+}
+
+.hidden {
+    display: none !important;
+}
+/* ==========================================================================
+   ІНТЕРАКТИВНІ КАРТКИ ІНВЕСТОРА (ЛАБ 15)
+   ========================================================================== */
+
+/* Робимо картку гнучкою, щоб кнопка завжди була внизу */
+.grid-card.card {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Вирівнюємо текст по лівому краю для зручного читання */
+    padding: 25px;
+    border: 1px solid rgba(140, 213, 134, 0.3); /* Ніжна зелена рамка */
+}
+
+/* Заголовок всередині картки */
+.grid-card.card h3 {
+    color: #8cd586;
+    font-family: "JetBrains Mono", sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+/* Основний текст */
+.grid-card.card p {
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f0f4f0;
+    margin-bottom: 15px;
+}
+
+/* Стиль для прихованого тексту (з'являється при кліку) */
+.grid-card.card .details {
+    background-color: rgba(0, 0, 0, 0.4); /* Темніша підкладка для контрасту */
+    padding: 15px;
+    border-left: 4px solid #8cd586; /* Фірмова акцентна лінія зліва */
+    border-radius: 4px;
+    font-size: 15px;
+    color: #d0d4d0;
+    margin-bottom: 20px;
+}
+
+/* Кнопка "Детальніше" */
+.detailsBtn {
+    margin-top: auto; /* МАГІЯ: завжди притискає кнопку до самого низу картки */
+    align-self: flex-start; /* Кнопка займає лише стільки місця, скільки треба тексту */
+    background-color: transparent;
+    color: #8cd586;
+    border: 2px solid #8cd586;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.detailsBtn:hover {
+    background-color: #8cd586;
+    color: #0d1a0d;
+    box-shadow: 0 0 12px rgba(140, 213, 134, 0.6);
+}
+
+/*
+   ІНТЕРАКТИВНИЙ СПИСОК ЗАВДАНЬ  ДЛЯ ЛАБ 15
+   */
+
+.todo-section {
+    background-color: rgba(10, 20, 10, 0.85); /* Твоя фірмова підкладка */
+    border: 1px solid rgba(140, 213, 134, 0.2);
+    box-shadow: var(--box-shadow);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    font-family: var(--font);
+}
+
+.todo-section h2 {
+    font-family: "JetBrains Mono", sans-serif;
+    color: #8cd586; /* Наш акцентний зелений */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+/* Поле вводу та кнопка "Додати" в один рядок */
+.todo-section #taskInput {
+    width: calc(100% - 140px); /* Автоматично вираховує місце під кнопку */
+    padding: 12px 15px;
+    border-radius: 8px 0 0 8px; /* Заокруглення тільки зліва */
+    border: 2px solid #6b784d;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    color: #0d1a0d;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.todo-section #taskInput:focus {
+    outline: none;
+    border-color: #8cd586;
+    box-shadow: 0 0 10px rgba(140, 213, 134, 0.5);
+}
+
+.todo-section #addTaskBtn {
+    width: 130px;
+    padding: 12px;
+    border-radius: 0 8px 8px 0; /* Заокруглення тільки справа */
+    border: 2px solid #8cd586;
+    background-color: #23421b;
+    color: #8cd586;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.todo-section #addTaskBtn:hover {
+    background-color: #8cd586;
+    color: #0d1a0d;
+    box-shadow: 0 0 12px #8cd586;
+}
+
+/* Блок фільтрів (Усі, Активні, Виконані) */
+.todo-section .filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.todo-section .filters button {
+    background-color: rgba(25, 46, 23, 0.6);
+    border: 1px solid #6b784d;
+    color: #f0f4f0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.todo-section .filters button:hover {
+    border-color: #8cd586;
+    color: #8cd586;
+    background-color: rgba(140, 213, 134, 0.1);
+}
+
+/* Список завдань */
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+#taskList li {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 4px solid #6b784d; /* Акцентна лінія зліва для невиконаних */
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+#taskList li span {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #f0f4f0;
+    padding-right: 15px;
+    word-break: break-word;
+}
+
+/* Динамічні кнопки управління всередині рядка завдання */
+#taskList li button {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 8px;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+/* Кнопка "Виконано" / "Скасувати" */
+#taskList li button:nth-of-type(1) {
+    background-color: #23421b;
+    color: #8cd586;
+    border: 1px solid rgba(140, 213, 134, 0.3);
+}
+
+#taskList li button:nth-of-type(1):hover {
+    background-color: #356329;
+}
+
+/* Кнопка "Видалити" */
+#taskList li button:nth-of-type(2) {
+    background-color: #421b1b;
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+#taskList li button:nth-of-type(2):hover {
+    background-color: #632929;
+}
+
+/* СТИЛІ ДЛЯ СТАНУ "ВИКОНАНО" (Генерується через JS клас .done) */
+#taskList li.done {
+    border-left-color: #8cd586; /* Зміна лінії на яскраво-зелену */
+    background-color: rgba(140, 213, 134, 0.02);
+    opacity: 0.6; /* Легке затінення виконаного завдання */
+}
+
+#taskList li.done span {
+    text-decoration: line-through; /* Закреслення тексту */
+    color: #a0a0a0;
+}
+
+/* Нижній лічильник завдань */
+#taskCounter {
+    font-size: 14px;
+    color: #6b784d;
+    text-align: right;
+    margin-top: 15px;
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 10px;
+}
+
+/* ші стиль */
+
+.chat-container {
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background-color: rgba(10, 20, 10, 0.85);
+    border: 1px solid rgba(140,213,134, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: var(--font);
+}
+
+.chat-header {
+    background-color: rgba(25, 46, 23, 0.9);
+    color: #8cd586;
+    padding: 15px 20px;
+    font-family: "JetBrains Mono", sans-serif;
+    font-size: 24px;
+    text-align: center;
+    border-bottom: 2px solid #6b784d;
+}
+
+.chat-history {
+    height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-message {
+    padding: 15px 20px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.6;
+    word-wrap: break-word;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.user-message {
+    background-color: rgba(140, 213, 134, 0.3);
+    color: #f0f4f0;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    border: 1px solid #8cd586;
+}
+
+.ai-message {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--color);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #6b784d;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 20px;
+    background-color: rgba(10, 20, 10, 0.95);
+    border-top: 2px solid #6b784d;
+    align-items: center;
+}
+
+#chatInput {
+    flex-grow: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #6b784d;
+    background-color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font);
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#chatInput:focus {
+    outline: none;
+    border: 3px solid #8cd586;
+    box-shadow: 0 0 10px #8cd586;
+}
+
+#chatSendBtn {
+    background-color: transparent;
+    color: #8cd586;
+    border: 2px solid #8cd586;
+    padding: 12px 25px;
+    margin-left: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+#chatSendBtn:hover {
+    background-color: #8cd586;
+    color: #0d1a0d;
+    box-shadow: 0 0 10px #8cd586;
+}
+
+#chatSendBtn:disabled {
+    border-color: #555555;
+    color: #aaaaaa;
+    cursor: not-allowed;
+}

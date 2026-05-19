@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт візитка</title>
+    <link href="Style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="/preview.ico" type="image/x-icon">
+</head>
+
+<body>
+<div class="logotip">
+    <img src="preview.ico" width="99px" alt="Лого">
+    <nav>
+        <a class="Top" href="MainPage.html"> Головна </a>
+        <a class="Top" href="Cabinet.html"> Кабінет </a>
+        <a class="Top" href="Map.html"> Experiments </a>
+        <a class="Top" href="Contacts.html"> Спосіб зв'язатися з нами </a>
+    </nav>
+</div>
+
+
+<section class="form-section">
+    <h2>Форма реєстрації</h2>
+
+    <form id="registerForm">
+        <label>
+            Email:
+            <input type="email" id="email" required />
+        </label>
+
+        <label>
+            Пароль:
+            <input type="password" id="password" required />
+        </label>
+
+        <button type="submit">Зареєструватися</button>
+    </form>
+
+    <p id="formMessage"></p>
+</section>
+
+
+<section class="todo-section">
+    <h2>Список завдань</h2>
+
+    <input type="text" id="taskInput" placeholder="Нове завдання" />
+    <button id="addTaskBtn">Додати</button>
+
+    <div class="filters">
+        <button data-filter="all">Усі</button>
+        <button data-filter="active">Активні</button>
+        <button data-filter="done">Виконані</button>
+    </div>
+
+    <ul id="taskList"></ul>
+    <p id="taskCounter"></p>
+</section>
+
+
+
+
+<div class="input-section">
+    <p class="Zagolovok-text">
+Порахувати Площу прямокутника за формулою: X*Y<br>
+    Порахувати g = sin^2((y * x1) / (x1 + 53 * x2^2))<br>
+    Х<input id="x1" type="number" style="height: 30px;">
+
+Y<input id="x2" type="number" style="height: 30px;">
+
+    <button id="one" class="Opisoviy-text"> Порахувати</button>
+    </p>
+
+</div>
+
+    <div id="result"class="Zvitchayniy-text" style="text-align: center; min-height: 50px;">
+
+    </div>
+<div id="result-1" class="Zvitchayniy-text" style="text-align: center; min-height: 50px;">
+
+</div>
+
+<div class="input-section">
+    <p class="Zagolovok-text">
+        Я вгадаю, яке число ви ввели, це:
+        <input id="y1" type="number" style="height: 30px;">
+        <button id="two">Перевірити</button>
+    </p>
+</div>
+
+<div id="result-2" class="Zvitchayniy-text" style="text-align: center; min-height: 50px;">
+
+</div>
+
+<button onclick="thisis()" class="Zvitchayniy-text" style="text-align: center; min-height: 50px;">
+    Tik!
+</button>
+
+
+<div class="Zagolovok-text">
+
+    <h3>
+        Ми доставляємо продукцію по цілій Україні
+    </h3>
+</div>
+
+
+<div class="Zagolovok-text">
+    <h3>
+        Наще місцеперебування
+    </h3>
+</div>
+<!-- ші -->
+<div class="chat-container">
+    <div class="chat-header">
+        🤖 Спілкування з ШІ (gemma 4)
+    </div>
+    <div class="chat-history" id="chatHistory">
+        <div class="chat-message ai-message">
+            Привіт! Я ваш локальний помічник. Чим можу допомогти сьогодні?
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Напишіть своє запитання..." autocomplete="off">
+        <button id="chatSendBtn">Відправити</button>
+    </div>
+</div>
+ші -->
+
+
+<div class="logotip">
+    <footer>
+        <address>
+            <ul>
+                <a href="#"> "BioCare" </a><br>
+                <a href="https://zt.com.ua/"
+                   target="blank"
+                   rel="nofollow">
+                    Вулиця Шевченка, 22, Харків, Харківська область, 61000</a><br>
+                <a class="btn btn-youtube" href="https://youtube.com">
+                    <i class="icon-youtube"></i> Наш YouTube
+                </a><br>
+                <a href="https://google.com/maps">Знайти нас на карті</a><br>
+                <a class="btn btn-facebook" href="https://facebook.com">
+                    <i class="icon-facebook"></i> Наш Facebook
+                </a><br>
+                <a href="mailto:dmytrenko.n2601.122.24@lntu.edu.ua">dmytrenko.n2601.122.24@lntu.edu.ua </a><br>
+                <a href="tel:+380961111111">+380 96 111 11 11 </a><br>
+            </ul>
+        </address>
+    </footer>
+</div>
+<script src="jquery-4.0.0.js"></script>
+<script type="text/javascript" src="JavaScript.js"></script>
+</body>
+</html>
+
+
+

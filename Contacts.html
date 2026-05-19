@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link href="Style.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="/preview.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спосіб зв'язатися з нами</title>
+</head>
+<body>
+
+<div class="logotip">
+    <img src="preview.ico" width="99px" alt="Лого">
+    <nav>
+        <a class="Top" href="MainPage.html"> Головна </a>
+        <a class="Top" href="Cabinet.html"> Кабінет </a>
+        <a class="Top" href="Map.html"> Experiments </a>
+        <a class="Top" href="Contacts.html"> Спосіб зв'язатися з нами </a>
+    </nav>
+</div>
+
+<div class="Zagolovok-text">
+    <h2>Будь ласка, ми готові до ваших пропозицій</h2>
+</div>
+
+<form method="post" enctype="text/plain" name="ContactsForm"> <!--action="mailto:dmytrenko.n2601.122.24@lntu.edu.ua" -->
+    <input type="text" name="_formnovalidate" value="Статус: Гість" disabled>
+    <input type="hidden" name="_formname" value="ContactsForm">
+    Ім'я:<br>
+    <input type="text" name="username" value="">
+    <br>
+    Прізвище:<br>
+    <input type="text" name="userlogin" value="">
+    <br>
+    Номер телефону:<br>
+    <input type="tel" name="tel" value="+380" required>
+    <br>
+    E-mail:
+    <br>
+    <input type="email" name="email" required>
+    <br><br>
+    <section>
+        <button class="Zvitchayniy-text open-modal-btn" style="cursor: pointer;">Підтвердити дані</button>
+    </section>
+
+    <div id="modal" class="modal hidden">
+        <div class="Product-Container" style="flex-direction: column; max-width: 500px; padding: 30px; text-align: center;">
+
+            <h3 class="Zagolovok-text" style="padding: 0; box-shadow: none;">Інформаційне повідомлення</h3>
+
+            <p class="Zvitchayniy-text" style="background: transparent; box-shadow: none;">
+                ви все правильно ввели
+            </p>
+
+            <button type="button" class="Zvitchayniy-text close-modal-btn" style="cursor: pointer; background-color: rgba(25, 46, 23, 0.9);">
+                Закрити
+            </button>
+
+        </div>
+    </div></form>
+
+
+
+<div class="logotip">
+    <footer>
+        <address>
+            <ul>
+                <a href="#"> "BioCare" </a><br>
+                <a href="https://zt.com.ua/"
+                   target="blank"
+                   rel="nofollow">
+                    Вулиця Шевченка, 22, Харків, Харківська область, 61000</a><br>
+                <a class="btn btn-youtube" href="https://youtube.com">
+                    <i class="icon-youtube"></i> Наш YouTube
+                </a><br>
+                <a href="https://google.com/maps">Знайти нас на карті</a><br>
+                <a class="btn btn-facebook" href="https://facebook.com">
+                    <i class="icon-facebook"></i> Наш Facebook
+                </a><br>
+                <a href="mailto:dmytrenko.n2601.122.24@lntu.edu.ua">dmytrenko.n2601.122.24@lntu.edu.ua </a><br>
+                <a href="tel:+380961111111">+380 96 111 11 11 </a><br>
+            </ul>
+        </address>
+    </footer>
+</div>
+
+<script src="jquery-4.0.0.js"></script>
+<script type="text/javascript" src="JavaScript.js"></script>
+
+</body>
+
+</html>
