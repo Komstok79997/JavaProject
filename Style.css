@@ -9,7 +9,7 @@
 html {
     /* Це база для скріншотів та довгих сторінок */
     background-color: #0d1a0d;
-    background-image: url("Hvoya.jpg");
+    background-image: url("Hvoya.webp");
 
     /* МАГІЯ: дозволяємо фону повторюватися вниз, якщо сторінка дуже довга */
     background-repeat: repeat-y;
@@ -26,7 +26,7 @@ body {
     background-color: transparent; /* body прозорий, щоб бачити фон html */
 
     /* А тут магія для реального користувача */
-    background-image: url("Hvoya.jpg");
+    background-image: url("Hvoya.webp");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
