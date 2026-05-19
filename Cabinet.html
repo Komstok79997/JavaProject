@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Style.css" rel="stylesheet" type="text/css"/>
     <link rel="icon" href="preview.ico" type="image/x-icon">
-    <title>Музика та відео</title>
+    <title>Кабінет</title>
 </head>
 <body>
 
@@ -20,25 +20,24 @@
     </nav>
 </div>
 
-<section class="form-section">
-    <h2>Форма реєстрації</h2>
+<div id="regModal" class="modal">
+    <div class="Product-Container" style="flex-direction: column; max-width: 450px; padding: 40px 30px; text-align: center; background-color: rgba(10, 20, 10, 0.98); border: 1px solid #8cd586; z-index: 1001;">
 
-    <form id="registerForm">
-        <label>
-            Email:
-            <input type="email" id="email" required />
-        </label>
+        <h3 class="Zagolovok-text" style="padding: 0; box-shadow: none; margin-bottom: 25px;">Вхід до кабінету</h3>
 
-        <label>
-            Пароль:
-            <input type="password" id="password" required />
-        </label>
+        <form id="registerForm" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <input type="email" id="email" placeholder="Ваш Email" required />
 
-        <button type="submit">Зареєструватися</button>
-    </form>
+            <input type="password" id="password" placeholder="Ваш Пароль" required style="width: 300px; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 2px solid #6b784d; background-color: rgba(255, 255, 255, 0.85); font-family: var(--font); font-size: 16px; outline: none;"/>
 
-    <p id="formMessage"></p>
-</section>
+            <button type="submit" class="detailsBtn" style="margin-top: 10px; width: 328px; text-align: center;">Увійти</button>
+
+            <button type="button" id="closeRegModal" class="detailsBtn" style="margin-top: 15px; width: 328px; text-align: center; background-color: transparent; border-color: #555; color: #aaa;">Продовжити як гість</button>
+        </form>
+
+        <p id="formMessage" class="Zvitchayniy-text" style="background: transparent; box-shadow: none; padding: 10px; margin: 0;"></p>
+    </div>
+</div>
 
 <main class="main-content-account">
     <h2 class="Zagolovok-text" style="padding: 0; font-size: 28px; text-align: left; margin-bottom: 20px;">Аналітика та Звіти</h2>
@@ -73,7 +72,16 @@
             <button class="detailsBtn">Детальніше</button>
         </article>
 
+
+
     </div>
+     <article class="Product-Container card" id="main-chart-card">
+    <h3>Графік</h3>
+    <p>Фінансове моделювання на наступні 3 роки.</p>
+    <p class="details hidden"><img src="GXi-rrlaMAAdBKE.jpg"> </p>
+    <button class="detailsBtn">Детальніше</button>
+</article>
+
 </main>
 
 <div class="logotip">

@@ -380,38 +380,60 @@ if (addTaskBtn && taskInput) {
     });
 }
 //Л 15 3
+
 //Л 15 3
+// ==========================================
+// Л 15 3 (Форма реєстрації у модальному вікні)
+// ==========================================
 const registerForm = document.getElementById("registerForm");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const formMessage = document.getElementById("formMessage");
+const regModal = document.getElementById("regModal");
+const closeRegModalBtn = document.getElementById("closeRegModal");
 
-if (registerForm) {
+if (registerForm && regModal) {
+    // 1. Закриття вікна кнопкою "Продовжити як гість"
+    if (closeRegModalBtn) {
+        closeRegModalBtn.addEventListener("click", () => {
+            regModal.classList.add("hidden");
+        });
+    }
+
+    // 2. Обробка відправки форми
     registerForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         if (!email.validity.valid) {
             formMessage.textContent = "Введіть коректний email";
-            formMessage.className = "error";
+            formMessage.style.color = "#ff6b6b"; // Червоний колір помилки
             return;
         }
 
         if (password.value.length < 6) {
             formMessage.textContent = "Пароль має містити не менше 6 символів";
-            formMessage.className = "error";
+            formMessage.style.color = "#ff6b6b";
             return;
         }
 
-        formMessage.textContent = "Реєстрація успішна!";
-        formMessage.className = "success";
+        // Якщо перевірки пройдені успішно
+        formMessage.textContent = "Вхід успішний! Завантаження...";
+        formMessage.style.color = "#8cd586"; // Зелений колір успіху
         registerForm.reset();
+
+        // Автоматично приховуємо модальне вікно через 1.5 секунди, щоб відкрити доступ до Кабінету
+        setTimeout(() => {
+            regModal.classList.add("hidden");
+        }, 1500);
     });
 }
-
 
 //
 
 //  КАРТКИ ІНВЕСТОРА- 4Л
+// ==========================================
+// КАРТКИ ІНВЕСТОРА (Графік та кнопки "Детальніше") - 4Л
+// ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     const detailsButtons = document.querySelectorAll(".detailsBtn");
 
@@ -422,23 +444,33 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = button.closest(".card");
             if (!card) return; // Захист на випадок помилки в HTML
 
-            // Всередині цієї картки шукаємо прихований текст
+            // Всередині цієї картки шукаємо прихований текст/абзац з картинкою
             const details = card.querySelector(".details");
             if (!details) return; // Захист
 
             // Перемикаємо клас hidden (якщо є - видаляємо, якщо немає - додаємо)
             details.classList.toggle("hidden");
 
-            // Змінюємо текст самої кнопки
+            // Шукаємо саме зображення всередині цього блоку
+            const chartImage = details.querySelector('img');
+
+            // Змінюємо текст самої кнопки та додаємо стилі для картинки, якщо вона показана
             if (details.classList.contains("hidden")) {
                 button.textContent = "Детальніше";
             } else {
                 button.textContent = "Згорнути";
+
+                // Додатковий штрих: центруємо та адаптуємо зображення графіка
+                if (chartImage) {
+                    chartImage.style.display = 'block';
+                    chartImage.style.margin = '20px auto 0 auto'; // Відступ зверху та центрування по боках
+                    chartImage.style.maxWidth = '100%'; // Щоб зображення не вилазило за рамки
+                    chartImage.style.height = 'auto';
+                }
             }
         });
     });
 });
-
 //далі інше, 6 Зав
 
 /*ші
