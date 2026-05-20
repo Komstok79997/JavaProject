@@ -200,56 +200,63 @@ function thisis() {
 }
 
 //перевірка введених даних у формах 15Л
-document.addEventListener('DOMContentLoaded', function() { // Запускаємо скрипт лише після побудови DOM
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form[name="ContactsForm"]');
     const modal = document.getElementById("modal");
     const closeBtns = document.querySelectorAll(".close-modal-btn");
 
-
     if (!form) {
-        return; // якщо нема форм - зупиняється
+        return;
     }
 
-
-    //Обробка відправки форми
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-
 
         const username = document.forms["ContactsForm"]["username"].value;
         const userlogin = document.forms["ContactsForm"]["userlogin"].value;
         const tel = document.forms["ContactsForm"]["tel"].value;
         const email = document.forms["ContactsForm"]["email"].value;
 
-        // 1. Перевірка на порожні поля
         if (username === "" || userlogin === "" || tel === "" || email === "") {
             alert("Будь ласка, заповніть усі обов'язкові поля.");
-            return; // Зупиняємо функцію, модалка не відкриється
+            return;
         }
-        // 2. Дозволяємо українську та англійську розкладки
+
         const namePattern = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ' \-]+$/;
         if (!namePattern.test(username)) {
-            alert("Помилка: Ім'я може містити лише літери!");
+            alert("Помилка: Ім'я може містити лишь літери!");
             return;
         }
         if (!namePattern.test(userlogin)) {
-            alert("Помилка: Прізвище може містити лише літери!");
+            alert("Помилка: Прізвище може містити лишь літери!");
             return;
         }
-        // 3. Перевірка телефону
+
         const phonePattern = /^\+380\d{9}$/;
         if (!phonePattern.test(tel)) {
             alert("Некоректний номер телефону!\nФормат має бути: +380XXXXXXXXX (без пробілів).");
             return;
         }
-        // 4. Перевірка пошти
+
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@a-zA-Z]*[a-zA-Z]+$/;
         if (!emailPattern.test(email)) {
             alert("Некоректний формат електронної пошти.");
             return;
         }
-        //Усі перевірки пройдені!
-        modal.classList.remove("hidden");
+
+        const formContentWrapper = document.getElementById("formContentWrapper");
+        const successTicket = document.getElementById("successTicket");
+        const ticketName = document.getElementById("ticketName");
+
+        if (formContentWrapper && successTicket) {
+            if (username.trim().length >= 2) {
+                ticketName.textContent = username;
+            }
+            formContentWrapper.classList.add("collapsed");
+            successTicket.classList.add("expanded");
+        } else {
+            modal.classList.remove("hidden");
+        }
     });
 
     closeBtns.forEach(button => {
@@ -382,51 +389,6 @@ if (addTaskBtn && taskInput) {
 //Л 15 3
 
 //Л 15 3
-// ==========================================
-// Л 15 3 (Форма реєстрації у модальному вікні)
-// ==========================================
-const registerForm = document.getElementById("registerForm");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const formMessage = document.getElementById("formMessage");
-const regModal = document.getElementById("regModal");
-const closeRegModalBtn = document.getElementById("closeRegModal");
-
-if (registerForm && regModal) {
-    // 1. Закриття вікна кнопкою "Продовжити як гість"
-    if (closeRegModalBtn) {
-        closeRegModalBtn.addEventListener("click", () => {
-            regModal.classList.add("hidden");
-        });
-    }
-
-    // 2. Обробка відправки форми
-    registerForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        if (!email.validity.valid) {
-            formMessage.textContent = "Введіть коректний email";
-            formMessage.style.color = "#ff6b6b"; // Червоний колір помилки
-            return;
-        }
-
-        if (password.value.length < 6) {
-            formMessage.textContent = "Пароль має містити не менше 6 символів";
-            formMessage.style.color = "#ff6b6b";
-            return;
-        }
-
-        // Якщо перевірки пройдені успішно
-        formMessage.textContent = "Вхід успішний! Завантаження...";
-        formMessage.style.color = "#8cd586"; // Зелений колір успіху
-        registerForm.reset();
-
-        // Автоматично приховуємо модальне вікно через 1.5 секунди, щоб відкрити доступ до Кабінету
-        setTimeout(() => {
-            regModal.classList.add("hidden");
-        }, 1500);
-    });
-}
 
 //
 
@@ -471,7 +433,90 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-//далі інше, 6 Зав
+//далі інше,
+// ==========================================
+// PRELOADER (Екран завантаження)
+// ==========================================
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden-preloader');
+        }, 1200); // 1.2 секунди затримки для ефекту преміальності
+    }
+});
+
+// ==========================================
+// Л 15 3 (Форма реєстрації + Блок профілю)
+// ==========================================
+const registerForm = document.getElementById("registerForm");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const formMessage = document.getElementById("formMessage");
+const regModal = document.getElementById("regModal");
+const closeRegModalBtn = document.getElementById("closeRegModal");
+
+// Елементи блоку профілю
+const userProfileBlock = document.getElementById("userProfileBlock");
+const profileGreeting = document.getElementById("profileGreeting");
+const profileStatus = document.getElementById("profileStatus");
+
+if (registerForm && regModal) {
+    // 1. Закриття вікна кнопкою "Продовжити як гість"
+    if (closeRegModalBtn) {
+        closeRegModalBtn.addEventListener("click", () => {
+            regModal.classList.add("hidden");
+
+            // Активуємо статус гостя
+            if (userProfileBlock) {
+                profileGreeting.innerHTML = "Вітаємо, <b>Гість</b>!";
+                profileStatus.textContent = "Гість";
+                profileStatus.style.color = "#aaaaaa"; // Сірий колір
+                profileStatus.style.borderColor = "#555";
+                userProfileBlock.classList.remove("hidden");
+            }
+        });
+    }
+
+    // 2. Обробка відправки форми (Успішний логін)
+    registerForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!email.validity.valid) {
+            formMessage.textContent = "Введіть коректний email";
+            formMessage.style.color = "#ff6b6b";
+            return;
+        }
+
+        if (password.value.length < 6) {
+            formMessage.textContent = "Пароль має містити не менше 6 символів";
+            formMessage.style.color = "#ff6b6b";
+            return;
+        }
+
+        // Успішна валідація
+        formMessage.textContent = "Вхід успішний! Завантаження...";
+        formMessage.style.color = "#8cd586";
+
+        // Зберігаємо email до того, як форма очиститься
+        const userEmail = email.value;
+        registerForm.reset();
+
+        // Через 1.5 секунди ховаємо вікно реєстрації та показуємо профіль інвестора
+        setTimeout(() => {
+            regModal.classList.add("hidden");
+
+            // Активуємо статус Інвестора
+            if (userProfileBlock) {
+                profileGreeting.innerHTML = `Вітаємо, <b>${userEmail}</b>!`;
+                profileStatus.textContent = "Інвестор";
+                profileStatus.style.color = "#8cd586"; // Зелений колір
+                profileStatus.style.borderColor = "#8cd586";
+                userProfileBlock.classList.remove("hidden");
+            }
+        }, 1500);
+    });
+}
 
 /*ші
 document.addEventListener('DOMContentLoaded', function() {

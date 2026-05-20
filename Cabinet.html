@@ -9,12 +9,15 @@
 </head>
 <body>
 
+<div id="preloader" class="preloader">
+    <img src="preview.ico" alt="BioCare Logo" class="pulse-logo">
+</div>
+
 <div class="logotip">
     <img src="preview.ico" width="99px" alt="Лого">
     <nav>
         <a class="Top" href="index.html"> Головна </a>
         <a class="Top" href="Cabinet.html"> Кабінет </a>
-        <a class="Top" href="Map.html"> Experiments </a>
         <a class="Top" href="Contacts.html"> Спосіб зв'язатися з нами </a>
 
     </nav>
@@ -40,8 +43,12 @@
 </div>
 
 <main class="main-content-account">
-    <h2 class="Zagolovok-text" style="padding: 0; font-size: 28px; text-align: left; margin-bottom: 20px;">Аналітика та Звіти</h2>
+    <div id="userProfileBlock" class="user-profile hidden">
+        <div class="profile-greeting" id="profileGreeting">Вітаємо, <b>Гість</b>!</div>
+        <div class="profile-status">Ваш статус: <span id="profileStatus">Гість</span></div>
+    </div>
 
+    <h2 class="Zagolovok-text" style="padding: 0; font-size: 28px; text-align: left; margin-bottom: 20px;">Аналітика та Звіти</h2>
     <div class="investor-grid">
 
         <article class="grid-card card">

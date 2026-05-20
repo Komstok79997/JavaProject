@@ -128,10 +128,15 @@ table {
     line-height: 1.6;
     margin: 0 auto;
     padding: 30px;
-    background-color: rgba(10, 20, 10, 0.75); /* Темна напівпрозора підложка під текст */
-    border-radius: 15px; /* Заокруглені кути для сучасності */
+    background-color: rgba(10, 20, 10, 0.75);
+    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     margin-bottom: 35px;
+}
+#knopka{
+    background-color: rgba(10, 20, 10, 0.85);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+
 }
 .Product-Container {        /* наш внутрішній блок з фактами. Тобто та зигзаг табличка відноситься сюди*/
     display: flex;                                                                   /* Вмикаємо режим гнучких блоків */
@@ -472,9 +477,7 @@ a[href*="google"] {
 .hidden {
     display: none !important;
 }
-/* ==========================================================================
-   ІНТЕРАКТИВНІ КАРТКИ ІНВЕСТОРА (ЛАБ 15)
-   ========================================================================== */
+
 
 /* Робимо картку гнучкою, щоб кнопка завжди була внизу */
 .grid-card.card {
@@ -753,6 +756,119 @@ a[href*="google"] {
     padding: 12px 30px;
     margin-top: 20px;
 }
+
+.form-collapse-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 800px; /* Початкова висота, достатня для форми */
+    opacity: 1;
+    overflow: hidden;
+    /* Плавний перехід для висоти та прозорості */
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin 0.6s ease;
+}
+
+/* Клас, який додасть JS для згортання */
+.form-collapse-wrapper.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стартовий стан Квитка успіху */
+.success-ticket {
+    flex-direction: column;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 40px; /* Падінги по вертикалі 0, щоб не займав місце */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    border: 1px solid rgba(140, 213, 134, 0.4);
+    /* Затримка появи (0.3s), щоб форма встигла згорнутися перед появою тексту */
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity 0.6s ease 0.4s, padding 0.6s ease 0.3s;
+}
+
+/* Клас, який додасть JS для розгортання */
+.success-ticket.expanded {
+    max-height: 600px;
+    opacity: 1;
+    padding: 40px;
+    margin-top: 40px;
+}
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d1a0d; /* Найтемніший колір фону */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Поверх абсолютно всього */
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader.hidden-preloader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.pulse-logo {
+    width: 120px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.5; }
+}
+
+/* =========================================
+   БЛОК ПРОФІЛЮ (Dashboard Header)
+   ========================================= */
+.user-profile {
+    background-color: rgba(25, 46, 23, 0.8);
+    border: 1px solid rgba(140, 213, 134, 0.4);
+    border-radius: 12px;
+    padding: 15px 25px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.profile-greeting {
+    font-family: var(--font);
+    font-size: 18px;
+    color: #f0f4f0;
+}
+
+.profile-status {
+    font-family: "JetBrains Mono", sans-serif;
+    font-size: 16px;
+    color: #c5dac4;
+}
+
+.profile-status span {
+    font-weight: bold;
+    padding: 4px 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    margin-left: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 /* ПРАВИЛО ДЛЯ МОБІЛЬНИХ планшетів */
 @media (max-width: 1200px) {
     .sidebar { width: 30%; }
@@ -807,6 +923,7 @@ a[href*="google"] {
         margin: 0 auto;
     }
 }
+
 /* ПРАВИЛО ДЛЯ МОБІЛЬНИХ ТЕЛЕФОНІВ (Екрани вужчі за 768px) */
 @media (max-width: 768px) {
 
@@ -977,6 +1094,11 @@ a[href*="google"] {
     .Product-Container.card .details img {
         max-width: 100%;
         height: auto;
+    }
+    .user-profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
     }
 }
 
