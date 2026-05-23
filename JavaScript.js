@@ -1,71 +1,4 @@
-jQuery( document ).ready( function() {//тут пишемо код
-    jQuery('button#one').on('click', function() {
-        let x, y, z, f;
-        x = Number(jQuery('#x1').val());
-        y = Number(jQuery('#x2').val());
-        z= y * x;
-        f = x > y ? x : y;
 
-
-        if(x<=0|| y<=0) {
-            alert('Please enter a correct number');
-        }
-        else if(z<=0){
-            alert('Something went wrong');
-        }
-        else {
-            alert('Congratulations!'+'\n'+"Площа прямокутника-" + z );
-            jQuery('#result-1').html("Y= " + z + "\n"  );
-        }
-
-         if(x<y){
-            alert('x<y');
-        }
-        else if(x>y){
-            alert('x>y');
-        }
-        else if (y === 0 || x === 0){
-            alert('error');
-         }
-    else {
-            alert('x = y =' + f);
-         }
-    //event.preventDefault(); Вона скасовує стандартну дію браузера, яка мала б статися після кліку.
-    });
-
-    jQuery('button#two').on('click', function() {
-
-        let j = Number(jQuery('#y1').val());
-        switch (j) {
-            case 1:
-                outputText = "Це- " + j;
-                break;
-            case 2:
-                outputText = "Це- " + j;
-                break;
-            default:
-                outputText = "Без поняття";
-        }
-        jQuery('#result-2').html(outputText);
-    })
-
-        jQuery('input').on('input', function(){
-            let x, y;
-
-            x = Number(jQuery('#x1').val());
-            y = Number(jQuery('#x2').val());
-
-            let b= x+(Math.pow(y, 2)*53);
-            if (b === 0) return;
-            let c=y/b;
-            let d=c*x;
-            let g = Math.pow(Math.sin(d), 2);//final sinus
-
-
-            jQuery('#result').html("g = sin^2((y * x1) / (x1 + 53 * x2^2)) = <b>" + g + "</b>");
-        });
-
-    });
 //Початок Л11
 //початок таймера
 const Days = document.getElementById('days');
@@ -278,117 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 // далі 5- ті завдання
-// БЛОК 1: TODO-СПИСОК
-
-const taskInput = document.getElementById("taskInput");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const taskList = document.getElementById("taskList");
-const taskCounter = document.getElementById("taskCounter");
-const filterButtons = document.querySelectorAll("[data-filter]");
-
-let tasks = [];
-let currentFilter = "all";
-
-function renderTasks() {
-    if (!taskList) return; // Захист: якщо немає списку, не намагаємося його малювати
-
-    taskList.innerHTML = "";
-
-    let filteredTasks = tasks;
-
-    if (currentFilter === "active") {
-        filteredTasks = tasks.filter((task) => !task.done);
-    }
-
-    if (currentFilter === "done") {
-        filteredTasks = tasks.filter((task) => task.done);
-    }
-
-    filteredTasks.forEach((task) => {
-        const li = document.createElement("li");
-        li.className = task.done ? "done" : "";
-
-        const span = document.createElement("span");
-        span.textContent = task.text;
-
-        const doneBtn = document.createElement("button");
-        doneBtn.textContent = task.done ? "Скасувати" : "Виконано";
-        doneBtn.addEventListener("click", () => toggleTask(task.id));
-
-        const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Видалити";
-        deleteBtn.addEventListener("click", () => deleteTask(task.id));
-
-        li.appendChild(span);
-        li.appendChild(doneBtn);
-        li.appendChild(deleteBtn);
-
-        taskList.appendChild(li);
-    });
-
-    if (taskCounter) {
-        taskCounter.textContent = `Усього завдань: ${tasks.length}`;
-    }
-}
-
-function addTask() {
-    if (!taskInput) return;
-    const text = taskInput.value.trim();
-
-    if (text === "") {
-        alert("Введіть текст завдання");
-        return;
-    }
-
-    const newTask = {
-        id: Date.now(),
-        text: text,
-        done: false
-    };
-
-    tasks.push(newTask);
-    taskInput.value = "";
-    renderTasks();
-}
-
-function toggleTask(id) {
-    tasks = tasks.map((task) => {
-        if (task.id === id) {
-            return {
-                ...task,
-                done: !task.done
-            };
-        }
-        return task;
-    });
-    renderTasks();
-}
-
-function deleteTask(id) {
-    tasks = tasks.filter((task) => task.id !== id);
-    renderTasks();
-}
-
-//Вішаємо події ТІЛЬКИ якщо кнопки існують на поточній сторінці
-if (addTaskBtn && taskInput) {
-    addTaskBtn.addEventListener("click", addTask);
-
-    taskInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            addTask();
-        }
-    });
-
-    filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            currentFilter = button.dataset.filter;
-            renderTasks();
-        });
-    });
-}
-//Л 15 3
-
-//Л 15 3
 
 //
 
@@ -629,4 +451,73 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Enter') sendToAI();
     });
 });
+*/
+/*jQuery( document ).ready( function() {//тут пишемо код
+    jQuery('button#one').on('click', function() {
+        let x, y, z, f;
+        x = Number(jQuery('#x1').val());
+        y = Number(jQuery('#x2').val());
+        z= y * x;
+        f = x > y ? x : y;
+
+
+        if(x<=0|| y<=0) {
+            alert('Please enter a correct number');
+        }
+        else if(z<=0){
+            alert('Something went wrong');
+        }
+        else {
+            alert('Congratulations!'+'\n'+"Площа прямокутника-" + z );
+            jQuery('#result-1').html("Y= " + z + "\n"  );
+        }
+
+         if(x<y){
+            alert('x<y');
+        }
+        else if(x>y){
+            alert('x>y');
+        }
+        else if (y === 0 || x === 0){
+            alert('error');
+         }
+    else {
+            alert('x = y =' + f);
+         }
+    //event.preventDefault(); Вона скасовує стандартну дію браузера, яка мала б статися після кліку.
+    });
+
+    jQuery('button#two').on('click', function() {
+
+        let j = Number(jQuery('#y1').val());
+        switch (j) {
+            case 1:
+                outputText = "Це- " + j;
+                break;
+            case 2:
+                outputText = "Це- " + j;
+                break;
+            default:
+                outputText = "Без поняття";
+        }
+        jQuery('#result-2').html(outputText);
+    })
+
+        jQuery('input').on('input', function(){
+            let x, y;
+
+            x = Number(jQuery('#x1').val());
+            y = Number(jQuery('#x2').val());
+
+            let b= x+(Math.pow(y, 2)*53);
+            if (b === 0) return;
+            let c=y/b;
+            let d=c*x;
+            let g = Math.pow(Math.sin(d), 2);//final sinus
+
+
+            jQuery('#result').html("g = sin^2((y * x1) / (x1 + 53 * x2^2)) = <b>" + g + "</b>");
+        });
+
+    });
 */
